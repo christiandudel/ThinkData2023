@@ -116,7 +116,7 @@ Materials are available from GitHub, also mirrored on OSF:
 
 # ARD in social science research (1)
 
-- ARD is a (mostly) recent development in social science research
+- ARD is a (mostly) recent development in (social science) research
 
 - According to Google Scholar: 1,200 publications in 1990-94 with 'register data'...
 
