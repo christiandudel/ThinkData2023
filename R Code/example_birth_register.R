@@ -63,6 +63,10 @@ dat %>% lazy_dt %>% group_by(dmage) %>% count %>% as_tibble
 
 ### Data cleaning ##############################################################
 
+# Descriptive look at age range
+dat$dmage %>% table # Mothers
+dat$dfage %>% table # Fathers
+
 
 ### Merging with exposures #####################################################
 
