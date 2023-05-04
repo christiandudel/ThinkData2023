@@ -156,7 +156,14 @@ Why did ARD only become popular recently?
 
 # Challenges: Ethical
 
+- Informed consent
+- Abuse of registers
+
 # Challenges: Legal
+
+- Data protection laws
+- Limited access 
+- "Compututational challenges"
 
 # Challenges: Technical
 
