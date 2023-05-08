@@ -45,6 +45,14 @@ Materials are available from GitHub, also mirrored on OSF:
 - https://github.com/christiandudel/ThinkData2023
 - https://osf.io/h6knq/
 
+# Course schedule
+
+9:30-12:00 Introduction
+
+13:00-14:30 Handling of big data, classic ARD
+
+15:00-16:30 Complex ARD
+
 # Contact
 
 - Email: dudel@demogr.mpg.de
@@ -69,19 +77,17 @@ Materials are available from GitHub, also mirrored on OSF:
 
 - Combined data from several registers for Norway  
 
-# Course schedule
+# What is ARD? (1)
 
-9:30-11:30 Introduction
+- No consistent definition in literature
 
-13:00-14:30 Handling of big data, classic ARD
+- No consistent terminology: administrative register data, register data, administrative data, administrative register, administrative records, ...
 
-15:00-16:30 Complex ARD
-
-# What is ARD?
+# What is ARD? (2)
 
 - "Administrative" = Derived from administrative system
 
-- "Register" = Covers full target population
+- "Register" = Run continuously, full target population
 
 - "Data" = Quantitative, rectangular data
 
@@ -94,17 +100,17 @@ Materials are available from GitHub, also mirrored on OSF:
 - Social security registers
 - Student registers
 - Health registers 
-- Company/establishment register
+- Company/establishment registers
 - Housing/building registers
-- Vehicle licensing
+- Vehicle licensing registers
 
 # Benefits of ARD
 
-- Often large, not just a sample
+- Size: not just a sample, often large
 
-- Good coverage: Participation is compulsory/legally required and/or highly incentivized
+- Participation: often compulsory (legally required), sometimes highly incentivized
 
-- Often high data quality with no (or very few) missing values
+- Nonresponse: Often no (or very few) missing values
 
 # ARD in demographic research
 
@@ -138,42 +144,59 @@ Why did ARD only become popular recently?
 
 - Found data: Often messy, fragmented, semi-systematic
 
-- Big data: May be large and complex
+- Big data: Often large and complex
 
 # Challenges of ARD
 
-- Ethical: Informed consent
+- Ethical
 
-- Legal: Difficult access
+- Legal
 
-- Technical: Data size/complexity 
+- Technical
 
-- Practical: Missing documentation
+- Practical
 
-- Analytic: Limited variables/measurement 
-
-- Quality: Data quality 
+- Quality
 
 # Challenges: Ethical
 
 - Informed consent
-- Abuse of registers
+
+- Misuse of registers
 
 # Challenges: Legal
 
 - Data protection laws
-- Limited access 
-- "Compututational challenges"
+
+- Limited access and control 
 
 # Challenges: Technical
 
+- Size: Requires a lot of computing power
+
+- Complexity: Handling difficult because of fragmentation
+
 # Challenges: Practical
 
-# Challenges: Analytic
+- Documentation: Completeness
+
+- Language: Data, documentation, experts
 
 # Challenges: Quality
 
-# Readings
+- Total survey error framework: difference between true value of statistic and value derived from survey is due to two main sources of errors, measurement and representation
+- Sources of errors can be further decomposed into error components
+- Can also be applied to ARD
+
+# Total survey error framework: Components
+
+- Representation: Coverage error, sampling error, nonresponse error (unit/item), adjustment error
+- Measurement: Validity, measurement error, processing error
+- To what extent do these apply to ARD? 
+
+# Total survey error framework: 
+
+# Readings: General
 
 - https://doi.org/10.1016/j.ssresearch.2016.04.015
 
@@ -182,3 +205,11 @@ Why did ARD only become popular recently?
 - https://doi.org/10.1111/j.1467-9574.2011.00508.x 
 
 - https://doi.org/10.3917/popu.1302.0215 
+
+# Readings: Data quality (examples)
+
+- https://doi.org/10.1111/aogs.14445
+
+- https://doi.org/10.1007/s00181-008-0238-6
+
+- https://www150.statcan.gc.ca/n1/pub/12-001-x/2015001/article/14151-eng.pdf 
