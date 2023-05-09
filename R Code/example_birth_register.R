@@ -37,7 +37,7 @@ file.size(zipfile)
 
 ### Loading data ###############################################################
 
-# Load data using data.table
+# Load data using data.table, combined with unzip
 command <- "unzip -cq"
 cmdzip <- paste(command,zipfile)
 dat <- fread(cmd = cmdzip)
@@ -63,9 +63,13 @@ dat %>% lazy_dt %>% group_by(dmage) %>% count %>% as_tibble
 
 ### Data cleaning ##############################################################
 
-# Descriptive look at age range
+# Descriptive look at age range of mothers and fathers
+dat$dmage %>% summary # Mothers
+dat$dfage %>% summary # Fathers
+
 dat$dmage %>% table # Mothers
 dat$dfage %>% table # Fathers
+
 
 
 ### Merging with exposures #####################################################
