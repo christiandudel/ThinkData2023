@@ -5,6 +5,13 @@ date: "May 17, 2023"
 output: beamer_presentation
 ---
 
+# Materials
+
+Materials are available from GitHub, also mirrored on OSF:
+  
+- https://github.com/christiandudel/ThinkData2023
+- https://osf.io/h6knq/
+
 # What will be covered in this course?
 
 1. Broad overview of benefits and challenges of ARD
@@ -38,13 +45,6 @@ Target audience: No experience with ARD
 
 - Some experience using statistical software (R or other software)
 
-# Materials
-
-Materials are available from GitHub, also mirrored on OSF:
-  
-- https://github.com/christiandudel/ThinkData2023
-- https://osf.io/h6knq/
-
 # Course schedule
 
 9:30-12:00 Introduction
@@ -75,7 +75,7 @@ Materials are available from GitHub, also mirrored on OSF:
 
 - Matched survey and social security register data from Germany
 
-- Combined data from several registers for Norway  
+- (Combined data from several registers for Norway)  
 
 # What is ARD? (1)
 
@@ -122,7 +122,7 @@ Materials are available from GitHub, also mirrored on OSF:
 
 # ARD in social science research (1)
 
-- ARD is a (mostly) recent development in (social science) research
+- ARD is a (mostly) recent development in social science research
 
 - According to Google Scholar: 1,200 publications in 1990-94 with 'register data'...
 
@@ -193,8 +193,6 @@ Why did ARD only become popular recently?
 - Representation: Coverage error, sampling error, nonresponse error (unit/item), adjustment error
 - Measurement: Validity, measurement error, processing error
 - To what extent do these apply to ARD? 
-
-# Total survey error framework: 
 
 # Readings: General
 
