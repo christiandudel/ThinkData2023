@@ -102,8 +102,49 @@ dat <- dat %>% filter(restatus!=4)
 # while it potentially will miss some resident men who have a child with a
 # mother abroad. Might cancel.
 
+# Get aggregated data
+mothers <- dat %>% group_by(dmage) %>% count
+fathers <- dat %>% group_by(dfage) %>% count
+
+# Rename variables
+mothers <- mothers %>% rename(Age=dmage)
+fathers <- fathers %>% rename(Age=dfage)
+
+# Remove missing value for fathers (!)
+fathers <- fathers %>% na.omit
+
 
 ### Merging with exposures #####################################################
 
+#install.packages("remotes")
+#library(remotes)
+#install_github("timriffe/TR1/TR1/HMDHFDplus")
+library(HMDHFDplus)
+
+# For HMD
+pw <- "password"
+user <- "username"
+
+# Get exposures
+exposures <- readHMDweb(CNTRY="USA",
+                        item="Exposures_1x1",
+                        password=pw,
+                        username=user)
+
+# Remove unnecessary data
+exposures <- exposures %>% select(Year,Age,Female,Male) %>% filter(Year%in%1990)
+
+# Merge
+mothers <- left_join(mothers,exposures)
+fathers <- left_join(fathers,exposures)
+
 
 ### Results ####################################################################
+
+# Calculate rates
+mothers <- mothers %>% mutate(rate=n/Female)
+fathers <- fathers %>% mutate(rate=n/Male)
+
+# Example plot
+mothers %>% ggplot(aes(x=Age,y=rate)) + geom_line()
+fathers %>% ggplot(aes(x=Age,y=rate)) + geom_line()
