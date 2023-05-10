@@ -1,11 +1,14 @@
 ### ThinkData 2023: Introduction to administrative register data
 ### First example: Vital registration/birth register data
 
-
 ## Data source
 ## https://www.nber.org/data/vital-statistics-natality-data.html
 ## Documentation: 
-## https://data.nber.org/natality/1990/desc/natl1990/
+## https://data.nber.org/natality/1990/
+## In particular:
+## https://data.nber.org/natality/1990/Nat1990doc.pdf 
+
+## Goal: Age-specific fertility rates for women and men
 
 
 ### Packages ###################################################################
@@ -70,6 +73,34 @@ dat$dfage %>% summary # Fathers
 dat$dmage %>% table # Mothers
 dat$dfage %>% table # Fathers
 
+# Caveat: Age of mother sometimes imputed, not well documented what that means
+dat$mageimp %>% table
+dat %>% filter(mageimp==1) %>% select(dmage) %>%table
+
+# What to do with very low and high ages?
+dat <- dat %>% mutate(dmage = case_match(dmage, 
+                                         10:14~15,
+                                         .default=dmage),
+                      dfage = case_match(dfage, 
+                                         10:14~15,
+                                         60:89~59,
+                                         99~NA,
+                                         .default=dfage))
+
+# Quick look at result
+dat$dfage %>% table(useNA="always") %>% prop.table
+# So there is actually a non-negligible proportion of missing values
+
+# Coverage
+dat$restatus %>% table
+
+# Restrict to mothers who are residents of the U.S.
+dat <- dat %>% filter(restatus!=4)
+# This will miss births to resident mothers if the birth happens abroad.
+# This variable is not available for fathers. 
+# So for men, the analysis will include some fathers who are not residents,
+# while it potentially will miss some resident men who have a child with a
+# mother abroad. Might cancel.
 
 
 ### Merging with exposures #####################################################
