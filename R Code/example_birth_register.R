@@ -91,6 +91,10 @@ dat <- dat %>% mutate(dmage = case_match(dmage,
 dat$dfage %>% table(useNA="always") %>% prop.table
 # So there is actually a non-negligible proportion of missing values
 
+# Impute missing values
+dat <- dat %>% mutate(dfage=ifelse(is.na(dfage),dmage+3,dfage))
+dat$dfage %>% table(useNA="always") %>% prop.table
+
 # Coverage
 dat$restatus %>% table
 
@@ -109,9 +113,6 @@ fathers <- dat %>% group_by(dfage) %>% count
 # Rename variables
 mothers <- mothers %>% rename(Age=dmage)
 fathers <- fathers %>% rename(Age=dfage)
-
-# Remove missing value for fathers (!)
-fathers <- fathers %>% na.omit
 
 
 ### Merging with exposures #####################################################
@@ -148,3 +149,7 @@ fathers <- fathers %>% mutate(rate=n/Male)
 # Example plot
 mothers %>% ggplot(aes(x=Age,y=rate)) + geom_line()
 fathers %>% ggplot(aes(x=Age,y=rate)) + geom_line()
+
+# TFRs
+sum(mothers$rate)
+sum(fathers$rate)
