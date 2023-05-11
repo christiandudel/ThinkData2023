@@ -1,0 +1,3 @@
+# Example data for ThinkData2023
+
+This folder contains several files of fake data. The data files describes the lives of several fake people. Their registration status (in some fictious country); their employment trajectories; and the births they give. The question which we will try to answer in the course using this data: what is the probability for a first birth for people in employment vs. people who are not in employment. Please note that the current version of the data is preliminary.
