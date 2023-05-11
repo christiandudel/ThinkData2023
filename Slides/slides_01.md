@@ -194,6 +194,15 @@ Why did ARD only become popular recently?
 - Measurement: Validity, measurement error, processing error
 - To what extent do these apply to ARD? 
 
+# Data handling process
+
+- Discovery: Learn about the data
+- Structuring: Bring it in a format ready for analysis
+- Cleaning: Edit variables, create new variables, etc.
+- Enriching: Combine with other data sources
+- Validating: Did the previous steps work as planned? 
+- Analysis: Run your analysis
+
 # Readings: General
 
 - https://doi.org/10.1016/j.ssresearch.2016.04.015
