@@ -47,7 +47,7 @@ Target audience: No experience with ARD
 
 # Course schedule
 
-9:30-12:00 Introduction
+9:30-11:30 Introduction
 
 13:00-14:30 Handling of big data, classic ARD
 
