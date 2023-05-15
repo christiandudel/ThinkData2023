@@ -57,7 +57,7 @@ reg_status$Age %>% table()
 
 # Discover (check observations with Status!=1)
 reg_status$Status %>% table(useNA="always")
-reg_status <- reg_status %>% group_by(ID) %>% mutate(check=any(is.na(Status)))
+reg_status <- reg_status %>% group_by(ID) %>% mutate(check=any(is.na(Status))) %>% ungroup
 reg_status %>% filter(check) %>% view
 # Let's perhaps keep this person 
 reg_status <- reg_status %>% select(!check)
@@ -168,4 +168,47 @@ reg_status %>% group_by(ID) %>% mutate(diff=Parity-lag(Parity)) %>% pull(diff) %
 file <- "Data/job_spells.csv"
 jobs <- read_csv(file)
 
-# Unfinished
+# Discover
+jobs # very small file, easy to look at
+
+# Clean: edit spells, Censoring
+jobs <- jobs %>% mutate(end=ifelse(is.na(end),"12-2020",end))
+jobs # quick check
+
+# Clean: edit spells, split year and month
+jobs <- jobs %>% separate(begin,into=c("begin_month","begin_year"))
+jobs <- jobs %>% separate(end,into=c("end_month","end_year"))
+
+# Assumption: Person counts as working in a year if there was any employment
+# So we just need to care about begin_year and end_year
+# Clean: reshape to long
+jobs <- jobs %>% rowwise %>% do(data.frame(id=.$id, year=seq(.$begin_year,.$end_year,by=1)))
+jobs$Employed <- 1
+
+# Clean: change variable names
+jobs <- jobs %>% rename(ID=id,Year=year)
+
+# Enrich
+reg_status <- left_join(reg_status,jobs)
+
+# Validate: Years of employment
+sum(jobs$Employed)
+sum(reg_status$Employed,na.rm=T)
+# Not matching?
+check1 <- jobs %>% group_by(ID) %>% summarize(check1=sum(Employed,na.rm=T))
+check2 <- reg_status %>% group_by(ID) %>% summarize(check2=sum(Employed,na.rm=T))
+left_join(check1,check2)
+jobs %>% filter(ID==6) %>% view
+reg_status %>% filter(ID==6) %>% view
+# => age-range restrictions etc.
+
+
+### Analysis ###################################################################
+
+# Clean
+reg_status <- reg_status %>% mutate(Employed=ifelse(is.na(Employed),0,Employed))
+
+# Analysis
+reg_status %>% ungroup %>% select(Employed,Birth) %>% table %>% prop.table(margin=1)
+
+# This is of course not a serious analysis
