@@ -45,6 +45,8 @@ command <- "unzip -cq"
 cmdzip <- paste(command,zipfile)
 dat <- fread(cmd = cmdzip)
 
+class(dat)
+
 # Quick look at data
 names(dat)
 table(dat$dfage)
