@@ -1,12 +1,10 @@
 ### ThinkData 2023: Introduction to administrative register data
 ### Second example: Fake complex data
 
-## Data source: 
-## My personal imagination
-## Documentation:
-## None
+## Data source: My personal imagination
+## Documentation: None
 
-## Goal: Risk of first birth by employment
+## Goal: Risk of first birth by employment status
 
 
 ### Packages ###################################################################
