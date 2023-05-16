@@ -78,6 +78,8 @@ births
 births %>% dim
 births %>% view
 births %>% summary
+# Variable "Mother" = ID of mother
+# Variable "Father" = ID of father
 
 # Discover (variables)
 births$Year %>% table(useNA="always")
@@ -101,6 +103,8 @@ reg_status %>% filter(Year==2000 & Birth ==1) %>% view
 
 # Validate some more
 reg_status$Birth %>% sum
+reg_status$BirthF %>% sum
+reg_status$BirthM %>% sum
 births %>% filter(Year%in%1990:2020 & !is.na(Mother)) %>% select(Mother) %>% count
 births %>% filter(Year%in%1990:2020 & !is.na(Father)) %>% select(Father) %>% count
 # => looks like we missed some births, but why?
