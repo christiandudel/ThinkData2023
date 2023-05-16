@@ -27,7 +27,13 @@ reg_status %>% summary
 # Discover (variables)
 reg_status$Year %>% table(useNA="always")
 reg_status$Status %>% table(useNA="always")
+# Status = 0   -> Status unknown
+# Status = 1   -> Registered in country
+# Status = 2   -> Outside of country
+# Status = 3   -> Dead
 reg_status$Gender %>% table(useNA="always")
+# Gender = 1   -> Men
+# Gender = 2   -> Women
 reg_status$Cohort %>% table(useNA="always")
 
 # Discover (nr of obs, nr of individuals, nr of obs per individual)
@@ -53,7 +59,7 @@ reg_status$Age %>% table()
 reg_status <- reg_status %>% filter(Age<50)
 reg_status$Age %>% table()
 
-# Discover (check observations with Status!=1)
+# Discover (check observations with Status==NA)
 reg_status$Status %>% table(useNA="always")
 reg_status <- reg_status %>% group_by(ID) %>% mutate(check=any(is.na(Status))) %>% ungroup
 reg_status %>% filter(check) %>% view
@@ -203,10 +209,11 @@ reg_status %>% filter(ID==6) %>% view
 
 ### Analysis ###################################################################
 
-# Clean
+# Cleaning: Status
+reg_status <- reg_status %>% filter(Status==1)
+
+# Clean a little more: Employment variable
 reg_status <- reg_status %>% mutate(Employed=ifelse(is.na(Employed),0,Employed))
 
 # Analysis
 reg_status %>% ungroup %>% select(Employed,Birth) %>% table %>% prop.table(margin=1)
-
-# This is of course not a serious analysis
